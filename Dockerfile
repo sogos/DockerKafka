@@ -1,6 +1,6 @@
-# Dockerfile for rundeck
-# https://github.com/jjethwa/rundeck
-# Bump to 2.4.0
+# Dockerfile for Apache Kafka
+# https://github.com/sogos/DockerKafka/
+# Bump to 2.9.1
 
 FROM debian:wheezy
 
