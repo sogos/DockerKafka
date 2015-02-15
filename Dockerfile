@@ -6,6 +6,8 @@ FROM debian:wheezy
 
 MAINTAINER Thibault Cordier
 
+ENV BROKER_ID 0
+
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get -qq update && apt-get -qqy upgrade && apt-get -qqy install --no-install-recommends curl bash supervisor procps sudo ca-certificates openjdk-7-jre-headless openssh-client mysql-client pwgen && apt-get clean
@@ -17,8 +19,7 @@ RUN rm -f /tmp/kafka_2.9.1-0.8.2.0.tgz
 ADD server.properties /opt/kafka/config/server.properties
 ADD run.sh /bin/run
 RUN chmod +x /bin/run
-#VOLUME  []
+VOLUME  ["/tmp/kafka-logs"]
 
-# Start Supervisor
 ENTRYPOINT ["/bin/run"]
 EXPOSE 9092
